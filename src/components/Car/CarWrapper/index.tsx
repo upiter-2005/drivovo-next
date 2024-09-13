@@ -1,0 +1,94 @@
+'use client'
+import { TopData } from "../TopData";
+import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
+import {startFundCount} from "@/helpers/startFundCount"
+import { useEffect } from "react";
+import { CarBlock2 } from "../CarBlock2";
+import { ICarTable1 } from "../CarTable1";
+interface ICarWrapper {
+  car: any
+}
+
+export const CarWrapper:React.FC<ICarWrapper> = ({car}) => {
+  const calcInstance = ownThreeYearsCount(car);
+
+  useEffect(()=> {
+    console.log(calcInstance);
+    console.log(car);
+  }, [])
+
+const maintenance_for_calculation = car.maintenance.formula.number;
+const carName = car.car_name.rich_text[0].plain_text;
+const coverFiles = car.Cover.files[0].file.url;
+const photo = car.Photo.files;
+const edited_time = car.edited_time.formula.date.start;
+const sandpulse_form = car.sandpulse_form.rich_text[0].plain_text;
+const residual_value = car.residual_value.number;
+
+const title = car.Title.rich_text[0].plain_text;
+const text = car.Text.rich_text[0].text.content;
+const acceleration = car.acceleration.rich_text[0]?.plain_text;
+const power = car.power.rich_text[0].plain_text;
+const engine_capacity = car.engine_capacity.rich_text[0].plain_text;
+const engine_type = car.engine_type.select.name;
+const vehicle_interior = car.vehicle_interior.select.name;
+const drive_type = car.drive_type.select.name;
+const body_type = car.body_type.select.name;
+const fuel_consumption = car.fuel_consumption.number;
+const video = car.video.rich_text[0]?.plain_text;
+
+const car_price_ex_showroom = car.car_price_ex_showroom.number;
+const pension_fund = car.pension_fund.formula.number;
+const insurance_1_year = car.insurance_1_year.formula.number;
+const registration = car.registration.formula.number;
+const luxury_tax = car.luxury_tax.number;
+const tinted_glass = car.tinted_glass.formula.number;
+const tires = car.tires.number;
+const carpets = car.carpets.number;
+const safety_net = car.safety_net.formula.number;
+const radiator_protection = car.radiator_protection.number;
+const armored_film = car.armored_film.number;
+
+const tire_service = car.tire_service.formula.number;
+const luxury_tax_2_years = car.luxury_tax_2_years.number;
+const osago_2_year = car.osago_2_year.formula.number;
+const maintenance = car.maintenance.formula.number;
+const insurance_2_year = car.insurance_2_year.formula.number;
+
+const price = startFundCount(car)
+console.log(price)
+
+  return(
+    <>
+    
+    <TopData 
+        cover={coverFiles}
+        carName={carName}
+        editedTime={edited_time}
+        sandpulseForm={sandpulse_form}
+        photo={photo}
+        price={calcInstance.pricePerMonthStandart}
+        calc={calcInstance}
+      />
+      <CarBlock2
+        title={title}
+        text={text}
+        acceleration={acceleration}
+        power={power}
+        engine_capacity={engine_capacity}
+        engine_type={engine_type}
+        vehicle_interior={vehicle_interior}
+        drive_type={drive_type}
+        body_type={body_type}
+        fuel_consumption={fuel_consumption}
+        video={video}
+      />
+      <ICarTable1
+        name={carName}
+        price={calcInstance.pricePerMonthStandart}
+        subscribeAvto={calcInstance.subscriptionAvto}
+       />   
+    </>
+    
+  )
+}

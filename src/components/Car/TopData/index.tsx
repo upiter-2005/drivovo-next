@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-'use client'
+
 import Image from 'next/image'
 import styles from "./TopData.module.scss"
 import clock from "@/assets/img/clock-ico.svg"
@@ -10,11 +10,13 @@ interface ICarObj {
   carName: string
   editedTime: string
   sandpulseForm: string
-  photo: any[]
+  photo: any[],
+  price: number,
+  calc: any
 }
 
-export const TopData:React.FC<ICarObj> = ({cover, carName, editedTime, sandpulseForm, photo}) => {
-console.log(carName);
+export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, sandpulseForm, photo, price}) => {
+console.log(calc);
 
   return(
     <div className={styles.appContainer}>
@@ -64,8 +66,8 @@ console.log(carName);
               <h1 className={styles.title}>{carName}</h1>
               <div className={styles.descr}>Авто в наявності, сів та поїхав за 30 хвилин</div>
               <div className={styles.price}>  
-            {/* ${pricePerMonthStandart}     */}
-           123123
+            ${price}    
+           
               <p className={styles.perMonth}>щомісячний платіж</p>
             </div>
             {/* <a href="#" className={`${styles.offerBtn} ${car.properties.sandpulse_form.rich_text[0]?.plain_text} `} >Замовити авто</a> */}

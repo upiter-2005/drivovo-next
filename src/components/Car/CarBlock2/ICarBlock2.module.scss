@@ -1,0 +1,138 @@
+.box{
+    padding: 0 12px;
+    max-width: 1079px;
+    width: 100%;
+    margin: 0 auto;
+    color: #23262A;
+  }
+  .videoBlock{
+  padding-top: 20px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .videoBox{
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 37%;
+      width: 100%;
+      //margin-right: 110px;
+      position: relative;
+    padding-bottom: 63.25%;
+    padding-top: 28px;
+    height: 0;
+      margin-left: 58px;
+      iframe{
+          border: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%!important;
+          height: 100%!important;
+      }
+  }
+  .data{
+      text-align: left;
+      width: 49%;
+      flex: 1;
+      margin-right: 24px;
+      .title{
+          color: #23262A;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 50px; /* 112.5% */
+          letter-spacing: -0.576px;
+          margin-bottom: 24px;
+      }
+      .text{
+          color: #23262A;
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 25px; 
+      }
+  }
+}
+.charContainer{
+    padding-top: 0;
+    margin-top: 56px;
+    h2{
+        text-align: left;
+        color: #23262A;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 32px;
+        letter-spacing: -0.576px;
+        margin-bottom: 32px;
+    }
+    .charBox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+     .charItem{
+        text-align: left;
+        width: 50%;
+        color: #23262A;
+        margin-bottom: 12px; 
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 25px; 
+        span:first-child{
+            color: #7D7D7D;
+            font-size: 19px;
+            font-weight: 400;
+            line-height: 25px; 
+            margin-bottom: 12px;
+            display: block;
+        }
+     }   
+    }
+}
+.divider{
+    height: 40px;
+}
+
+@media (max-width: 992px){
+    .videoBlock{
+        padding-top: 60px;
+        flex-direction: column;
+        .videoBox{
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 100%!important;
+            margin-right: 0;
+            position: relative;
+            padding-bottom: 132%;
+            padding-top: 179px;
+            height: auto;
+            margin-top: 40px;
+            margin-left: 0;
+            padding-left: 12px;
+            padding-right: 12px;
+            iframe{
+                border: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%!important;
+                height: 100%!important;
+            }
+        }
+        .data{
+            padding-left: 12px;
+            padding-right: 12px;
+            width: 100%;
+            margin: 0;
+            text-align: left;
+            flex: 1;
+            .title{
+                color: #23262A;
+                font-size: 32px;
+                line-height: 36px; 
+            }
+            .text{
+                font-size: 14px;
+                line-height: 20px; 
+            }
+        }
+    }
+}

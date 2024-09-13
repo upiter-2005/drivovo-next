@@ -1,0 +1,191 @@
+$accent: #FF5D04;
+.pk_table{
+    display: block;
+}
+.mob_table{
+    display: none;
+}
+.box{
+    padding: 0 12px;
+    max-width: 1079px;
+    width: 100%;
+    margin: 0 auto;
+    color: #23262A;
+  }
+
+  .tableTrio{
+    border: 1px solid #E5E5E5;
+    border-top: 17px solid $accent;
+    border-radius: 12px;
+    span{
+        &:first-child{
+            text-align: left;
+        }
+    }
+    .tableRowSubTitle{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        color: #23262A;
+        font-weight: 700;
+        font-size: 23px;
+        background-color: $accent;
+        color: #Fff;
+        .tableItem{
+            &:first-child{
+                font-weight: 700;
+                color: #fff;
+                border-right: .5px solid #E5E5E5;
+            }
+        }
+    }
+}
+.table{
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    border-top: 17px solid $accent;
+    margin: 0 auto 32px;
+   
+    .ico{
+        width: 23px;
+    }
+    .tableRow{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        img{
+            margin-left: 32px;
+            width: 24px;
+        }
+        &:nth-child(even){
+            .tableItemNew{
+                background-color: #FAFAFA;
+                &:last-child{
+                    background-color: #fff;
+                }
+            }
+        }
+        &:nth-child(odd){
+            background-color: #FAFAFA;
+            .tableItemNew{
+                background-color: #fff;
+                &:last-child{
+                    background-color: #FAFAFA;
+                }
+            }
+        }
+        span{
+            &:first-child{
+                border-right: .5px solid #E5E5E5;
+            }
+        }
+    }
+    .tableItemNew{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #FF5D04;
+    }
+    .tableRowSubTitle{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        color: #23262A;
+        font-weight: 700;
+        font-size: 23px;
+        background-color: $accent;
+        color: #Fff;
+        .tableItem{
+            &:first-child{
+                font-weight: 700;
+                color: #fff;
+                border-right: .5px solid #E5E5E5;
+            }
+        }
+    }
+    .tableTitle{
+        width: 50%;
+        padding: 17px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 700;
+        text-align: left;
+        font-size: 23px;
+    }
+    .tableItem{
+        padding: 17px 32px;
+        width: 50%;
+        font-size: 19px;
+        text-align: left;
+        &:first-child{
+            font-weight: 700;
+            color: $accent;
+            border-right: .5px solid #E5E5E5;
+        }
+        &:last-child{
+            font-weight: 400;
+        }
+
+    }
+}
+.leftAlign{
+    text-align: left!important;
+    padding-left: 20px!important;
+}
+.centerTitileRow{
+    width: 100%;
+    text-align: center;
+    padding: 0 0 16px;
+    font-size: 23px;
+}
+.customH2{
+    width: 95%;
+    max-width: 1030px;
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+@media (max-width: 992px){
+    .box{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .table{
+        .tableRow{
+            img{
+               width: 23px;
+            }
+        } 
+    }
+    .centerTitileRow{
+        padding-top: 8px;
+        font-size: 16px;
+    }
+    .stripeNewTable{
+        flex-wrap: wrap;
+        .tableRow{
+            flex-wrap: wrap;
+            width: 100%;
+            .tableItem{
+                span{
+                    width: 100%;
+                }
+               
+            }
+            .tableItemNew{
+                padding-right: 16px!important;
+                width: 100%;
+                font-size: 14px;
+                padding-right: 70px;
+                background-color: #FAFAFA!important;
+                &:nth-child(2n){
+                    background-color: #fff!important; 
+                }
+            }
+        }
+    }
+}
