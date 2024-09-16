@@ -8,6 +8,9 @@ import { DownloadSchedule } from "../DownloadSchedule";
 import { CarTable2 } from "../CarTable2";
 import { InfoBlock } from "../InfoBlock";
 import { Notice1 } from "../Notice1";
+import { FrameHubspot } from "../FrameHubspot";
+import { Comunity } from "@/components/Comunity";
+import { Reviews } from "@/components/Reviews";
 interface ICarWrapper {
   car: any
 }
@@ -125,6 +128,9 @@ const price = startFundCount(car)
       />  
       <InfoBlock />
       <Notice1 />
+      <FrameHubspot />
+      <Comunity />
+      <Reviews />
     </>
     
   )
