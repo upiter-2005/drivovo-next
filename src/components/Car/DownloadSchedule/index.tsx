@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import styles from "./DownloadSchedule.module.scss"
 import {HubspotContactForm} from "@/components/Car/HubspotContactForm"
 
@@ -11,7 +11,7 @@ export const DownloadSchedule:React.FC<IDowloadSchedule> = ({cover, sendPulse}) 
   return(
     <div className={styles.hbsp_box}>
        <div className={styles.hbsp_box_img}>
-        <Image src={cover} fill={true} className={styles.coverImg} alt="drivovo" />
+        <img src={cover}  className={styles.coverImg} alt="drivovo" />
       </div>
     
      {sendPulse && <HubspotContactForm id={sendPulse} />}

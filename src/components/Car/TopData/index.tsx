@@ -1,21 +1,62 @@
 /* eslint-disable @next/next/no-img-element */
-
+'use client'
 import Image from 'next/image'
 import styles from "./TopData.module.scss"
 import clock from "@/assets/img/clock-ico.svg"
 import red_check from "@/assets/img/red-check.svg"
+import Slider from 'react-slick'
+import { useState } from 'react'
 
 interface ICarObj {
   cover?: string
   carName?: string
   editedTime?: string
   sandpulseForm?: string
-  photo?: any[],
+  photo: any[],
   price?: number,
   calc?: any
 }
 
+function SampleNextArrow(props: any) {
+  const {  onClick } = props;
+  return (
+    <div
+      className={styles.nextArrow}
+      onClick={onClick}
+    >
+      <img src="/img/sl-right.png" alt="drivovo" />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props: any) {
+  const { onClick } = props;
+  return (
+    <div
+    className={styles.prevArrow}
+      onClick={onClick}
+    > <img src="/img/sl-left.png" alt="" /></div>
+  );
+}
+
+
 export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, sandpulseForm, photo, price}) => {
+
+  const [activeNumSlide, setActiveNumSlide] = useState<number>(1)
+
+  const topSlider = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    //adaptiveHeight: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    beforeChange: (current: number, next: number) => {
+      setActiveNumSlide(state=> next + 1 )
+    }
+  };
 
   return(
     <div className={styles.appContainer}>
@@ -25,18 +66,18 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
             //onClick={openModalArea}
            >
               {/* <img src="/img/zoom.png" className={styles.zoom} alt="drivovo zoom" /> */}
-              {/* <Slider {...topSlider} className={`${styles.topCarousel} mainSlider` }>
-                  <div key="mnphImg1" style={{ width: "100%" }} className={styles.sliderItem} >
+              <Slider {...topSlider} className={`${styles.topCarousel} mainSlider` }>
+                  {/* <div key="mnphImg1" style={{ width: "100%" }} className={styles.sliderItem} >
                       <img src={car?.properties.Cover.files[0].file?.url} 
                       className={styles.sliderTopImg} 
                       alt="" />
-                  </div>
-                {images?.map((img, idx) => (
+                  </div> */}
+                {photo.map((img, idx) => (
                   <div  key={idx} style={{ width: "100%" }} className={styles.sliderItem} >
                     <img src={img.file?.url} alt={img} className={styles.sliderTopImg}  />
                   </div>
                 ))}
-            </Slider> */}
+            </Slider>
           
             {/* <div className={styles.slideNumWrapper}>
                <div className={styles.digits}> {activeNumSlide }/{images?.length + 1}</div>
@@ -69,7 +110,7 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
            
               <p className={styles.perMonth}>щомісячний платіж</p>
             </div>
-            {/* <a href="#" className={`${styles.offerBtn} ${car.properties.sandpulse_form.rich_text[0]?.plain_text} `} >Замовити авто</a> */}
+            <a href="#" className={`${styles.offerBtn} ${sandpulseForm} `} >Замовити авто</a>
 
           
             

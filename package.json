@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@magicul/next-google-tag-manager": "^2.0.0",
     "@notionhq/client": "^2.2.15",
     "next": "14.2.10",
     "react": "^18",

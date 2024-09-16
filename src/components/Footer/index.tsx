@@ -1,4 +1,7 @@
 
+import { Client } from "@notionhq/client"
+const notion = new Client({ auth: process.env.NOTION_AUTH })
+const databaswId = process.env.NOTION_DB_ID
 import styles from "./Footer.module.scss";
 import Image from 'next/image'
 import mainlogo from "@/assets/img/main-logo.svg"
@@ -7,11 +10,28 @@ import youtube from "@/assets/img/youtube.svg"
 import fb from "@/assets/img/fb.svg"
 import linkedIn from "@/assets/img/in.svg"
 import tiktok from "@/assets/img/tiktok.svg"
+import Link from "next/link";
 // import  Link  from "next/link";
 // import ModalForm from "../ModalForm"
 
-export default function Footer() {
+export default async function Footer() {
+  const cars: any = await notion.databases.query({
+    database_id: databaswId || '',
+    sorts: [
+      {
+        property: "Name", 
+        direction: "ascending",
+      },
+    ],
+    filter: {
+      property: "Status",
+      status: {
+        equals: 'Done'
+      }
+    },
+  });
 
+  if(!cars.results) return(<p>Error</p>)
   return (
     <>
     {/* {modalForm &&  <ModalForm />} */}
@@ -80,9 +100,8 @@ export default function Footer() {
             <p>Автопарк</p>
             <div className={styles.modelsLinks}>
             
-              {/* {cars?.filter(obj => obj.properties?.Footer?.select?.name === "+")
-              .map((obj, i) => <a href={`/offer/${obj.properties.URL.rich_text[0]?.plain_text}`} key={obj.url}>{obj.properties.car_name.rich_text[0].plain_text}</a>)
-              } */}
+              {cars.results.map((obj: any, i: number) => <Link href={`/car/${obj.properties.URL.rich_text[0]?.plain_text}`} key={obj.url}>{obj.properties.car_name.rich_text[0].plain_text}</Link>)
+              }
             
             </div>
           

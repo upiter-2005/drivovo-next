@@ -11,6 +11,7 @@ import { Notice1 } from "../Notice1";
 import { FrameHubspot } from "../FrameHubspot";
 import { Comunity } from "@/components/Comunity";
 import { Reviews } from "@/components/Reviews";
+import { CarBlock3 } from "../CarBlock3";
 interface ICarWrapper {
   car: any
 }
@@ -59,6 +60,7 @@ const luxury_tax_2_years = car.luxury_tax_2_years.number;
 const osago_2_year = car.osago_2_year.formula.number;
 const maintenance = car.maintenance.formula.number;
 const insurance_2_year = car.insurance_2_year.formula.number;
+const bottom_cover = car.bottom_cover.files[0].file.url;
 
 const price = startFundCount(car)
 
@@ -131,6 +133,9 @@ const price = startFundCount(car)
       <FrameHubspot />
       <Comunity />
       <Reviews />
+      <CarBlock3
+        bottom_cover={bottom_cover}
+      />
     </>
     
   )

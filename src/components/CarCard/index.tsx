@@ -1,6 +1,5 @@
-'use client'
+/* eslint-disable @next/next/no-img-element */
 import styles from "./CarCard.module.scss";
-import Image from 'next/image'
 import SkeletonImage from "@/components/Skeleton";
 import Link from 'next/link'
 // import ModalForm from "../ModalForm"
@@ -19,7 +18,7 @@ export default function CarCard({...obj}) {
     // (<SkeletonImage />)
      (<p>Loading</p>)
      : 
-    (<Image src={obj.properties.Cover.files[0].file.url} width={500} height={500} style={{
+    (<img src={obj.properties.Cover.files[0].file.url}  style={{
       width: '100%',
       height: 'auto',
     }} alt={`Drivovo ${obj.properties.label_status.select.name}`} />)
@@ -35,24 +34,18 @@ export default function CarCard({...obj}) {
         <span>Динаміка:</span>
         <span>{obj.properties.acceleration.rich_text[0].plain_text}</span>
   </div>
-       {/* <div className={styles.props}>
-        <span>Максимальна швидкість:</span>
-        <span>???</span>
-    </div> */}
+    
     <div className={styles.props}>
         <span>Витрати палива:</span>
         <span>{obj.properties.fuel_consumption.number} л/100 км</span>
     </div>
-    {/* <div className={styles.props}>
-        <span>Кому підійде?</span>
-        <span>???</span>
-    </div>  */}
+ 
 
     {obj.properties.URL?.rich_text[0]?.plain_text === undefined ?
      <Link href={`/car/${obj.properties.URL.rich_text[0].plain_text}`} className="deActiveBtn" > Coming soon</Link>
       :
        <a href={`/car/${obj.properties.URL.rich_text[0].plain_text}`} >Подивитись</a> }
-    {/* <Link to={`/offer/${obj.properties.URL?.rich_text[0]?.plain_text}`}>Подивитись</Link> */}
+  
  
 </div>
 

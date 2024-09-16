@@ -1,8 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import Slider, { Settings } from "react-slick";
-import Image from "next/image"
-import slb_rightBig from "@/assets/img/slb-rightBig.png"
-import slb_leftBig from "@/assets/img/slb-leftBig.png"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/assets/css/comunity.scss"
@@ -12,15 +10,6 @@ import styles from "./Comunity.module.scss"
 
 import { useRef, useState } from "react"
 
-import sl1 from "@/assets/img/sl1.jpg"
-import sl2 from "@/assets/img/sl2.jpeg"
-import sl3 from "@/assets/img/sl3.jpeg"
-import sl4 from "@/assets/img/sl4.jpeg"
-import sl5 from "@/assets/img/sl5.jpeg"
-import sl6 from "@/assets/img/sl6.jpeg"
-import sl7 from "@/assets/img/sl7.jpeg"
-import sl8 from "@/assets/img/sl8.jpeg"
-
 function SampleNextArrow(props: any) {  
   const {  onClick } = props;
   return (
@@ -28,7 +17,7 @@ function SampleNextArrow(props: any) {
       className="nextArrow"
       onClick={onClick}
     >
-      <Image src={slb_rightBig} width={30} height={30} alt="" className="shadowArr"/>
+      <img src="/img/slb-rightBig.png" width={30} height={30} alt="" className="shadowArr"/>
     </div>
   );
 }
@@ -39,14 +28,21 @@ function SamplePrevArrow(props: any) {
     <div
     className="prevArrow"
       onClick={onClick}
-    > <Image src={slb_leftBig} width={30} height={30} alt="" className="shadowArr" /></div>
+    > <img src="/img/slb-leftBig.png" width={30} height={30} alt="" className="shadowArr" /></div>
   );
 }
 
 
 
 const slidersImg = [
-  sl1, sl2, sl3, sl4, sl5, sl6, sl7, sl8
+  '/img/sl1.jpg', 
+  '/img/sl2.jpeg', 
+  '/img/sl3.jpeg', 
+  '/img/sl4.jpeg', 
+  '/img/sl5.jpeg', 
+  '/img/sl6.jpeg', 
+  '/img/sl7.jpeg', 
+  '/img/sl8.jpeg', 
 ]
 
 export const Comunity:React.FC = () => {
@@ -96,7 +92,7 @@ export const Comunity:React.FC = () => {
           
           {slidersImg?.map((img, idx) => (
             <div className={idx === imageIndex ? "slide activeSlide" : "slide"} key={idx}>
-              <Image src={img} alt='drivovo' fill={true} />
+              <img src={img} alt='drivovo' />
             </div>
           ))}
 

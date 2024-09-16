@@ -1,14 +1,13 @@
-'use client'
 import React, {useEffect} from "react";
 import styles from "./HubspotContactForm.module.scss"
-
+ 
 interface IHubspotContactForm  {
     id: string
 }
 export const HubspotContactForm:React.FC<IHubspotContactForm> = ({id}) => {
 
   
-    useEffect(() => {
+    //useEffect(() => {
     //     let formId = id;
     //     const script = document.createElement('script');
     //    script.src='https://js.hsforms.net/forms/v2.js';
@@ -36,7 +35,7 @@ export const HubspotContactForm:React.FC<IHubspotContactForm> = ({id}) => {
         // }
 
 
-    }, []);
+    //}, []);
 
     return (
         <div className={styles.hbfContainer}>

@@ -1,13 +1,11 @@
-import Image from "next/image"
+/* eslint-disable @next/next/no-img-element */
 import styles from './Notice1.module.scss'
-import notice1 from "@/assets/img/notice1.jpeg"
-
 
 export const Notice1:React.FC = () => {
   return (
     <section className={styles.notice1}>
         <div className={styles.imgPart}>
-          <Image src={notice1}  alt="" />
+          <img src='/img/notice1.jpeg'  alt="" />
         </div>
         <div className={styles.rightPart}>
           <h2 >Drivovo - ви фабрика автомобільного щастя!</h2>
