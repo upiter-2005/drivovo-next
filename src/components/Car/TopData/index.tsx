@@ -6,17 +6,16 @@ import clock from "@/assets/img/clock-ico.svg"
 import red_check from "@/assets/img/red-check.svg"
 
 interface ICarObj {
-  cover: string
-  carName: string
-  editedTime: string
-  sandpulseForm: string
-  photo: any[],
-  price: number,
-  calc: any
+  cover?: string
+  carName?: string
+  editedTime?: string
+  sandpulseForm?: string
+  photo?: any[],
+  price?: number,
+  calc?: any
 }
 
 export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, sandpulseForm, photo, price}) => {
-console.log(calc);
 
   return(
     <div className={styles.appContainer}>
@@ -62,7 +61,7 @@ console.log(calc);
           {/* {(isModalSlider && !isMobile) ?  (<ModalSlider images={images} />) : ('')} */}
           <div className={styles.right}>
             <div className={styles.right_sticky}>
-              <div className={styles.date}>Оновлено {editedTime.substr(11,8)} {editedTime.substr(0,10)} </div>
+              <div className={styles.date}>Оновлено {editedTime?.substr(11,8)} {editedTime?.substr(0,10)} </div>
               <h1 className={styles.title}>{carName}</h1>
               <div className={styles.descr}>Авто в наявності, сів та поїхав за 30 хвилин</div>
               <div className={styles.price}>  

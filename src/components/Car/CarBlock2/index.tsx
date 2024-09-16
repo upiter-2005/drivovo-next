@@ -39,7 +39,7 @@ export const CarBlock2:React.FC<ICarBlock2> = ({title, text, acceleration, power
     }else{
       videoYt.current.internalPlayer.pauseVideo()
     }
-    console.log(isPlay.current);
+  
     
   }
 
@@ -118,6 +118,8 @@ export const CarBlock2:React.FC<ICarBlock2> = ({title, text, acceleration, power
         </div>
       </div>
       
+      <div className={styles.divider}></div>
+      <div className={styles.divider}></div>
       <div className={styles.divider}></div>
     </div>
     

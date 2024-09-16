@@ -30,7 +30,7 @@ export default async function Home() {
     },
   });
 
-  console.log(cars.results);
+
 
   if(!cars) return "not found"
 

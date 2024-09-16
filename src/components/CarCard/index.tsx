@@ -1,4 +1,4 @@
-
+'use client'
 import styles from "./CarCard.module.scss";
 import Image from 'next/image'
 import SkeletonImage from "@/components/Skeleton";

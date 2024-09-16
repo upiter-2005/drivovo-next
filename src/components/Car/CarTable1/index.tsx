@@ -5,9 +5,15 @@ interface ICarTable1 {
   name: string
   price: number
   subscribeAvto: number
+  taxes: number
+  osago: number
+  maintenance: number
+  tires: number
+  aditionals: number
+  service: number
 }
 
-export const ICarTable1:React.FC<ICarTable1> = ({name, price, subscribeAvto}) => {
+export const ICarTable1:React.FC<ICarTable1> = ({name, price, subscribeAvto, taxes, osago, maintenance, tires, aditionals, service}) => {
 
 
   return(<div className={styles.box}>
@@ -155,7 +161,7 @@ export const ICarTable1:React.FC<ICarTable1> = ({name, price, subscribeAvto}) =>
 
 
 
-      <h3 className="customH2">Дозволь собі це 😎 <br/>
+      <h3 className={styles.customH2}>Дозволь собі це 😎 <br/>
                       З чого складається підписка?</h3>
       <div className={styles.table}>
         <div className={styles.tableRow}>
@@ -172,62 +178,42 @@ export const ICarTable1:React.FC<ICarTable1> = ({name, price, subscribeAvto}) =>
             
           </span>
         </div>
-        {/* <div className={styles.tableRow}>
+         <div className={styles.tableRow}>
           <span className={styles.tableItem}>Податки / оформлення</span>
           <span className={`${styles.tableItem} spacing`}>
-            $ {(parseInt(changedCar?.properties.luxury_tax.number + 
-                        changedCar?.properties.luxury_tax_2_years.number +  
-                        changedCar?.properties.pension_fund.formula.number +  
-                        changedCar?.properties.registration.formula.number 
-              ) / 36).toFixed(0)}
+            $ {taxes}
           </span>
         </div>
         <div className={styles.tableRow}>
           <span className={styles.tableItem}>КАСКО + ОСАГО</span>
           <span className={`${styles.tableItem} spacing`}>
-          $ {(parseInt(changedCar?.properties.osago.formula.number + 
-                        changedCar?.properties.osago_2_year.formula.number + 
-                        changedCar?.properties.insurance_1_year.formula.number + 
-                        changedCar?.properties.insurance_2_year.formula.number  
-              ) / 36).toFixed(0)}
+          $ {osago}
           </span>
         </div>
         <div className={styles.tableRow}>
           <span className={styles.tableItem}>ТО</span>
           <span className={`${styles.tableItem} spacing`}>
-          $ {(parseInt(changedCar?.properties.maintenance.formula.number 
-              ) / 36).toFixed(0)}
+          $ {maintenance}
           </span>
         </div>
-        <div className={styles.tableRow}>
+       <div className={styles.tableRow}>
           <span className={styles.tableItem}>Зимова гума, зберігання, шиномонтаж</span>
           <span className={`${styles.tableItem} spacing`}>
-          $ {(parseInt(changedCar?.properties.tire_service.formula.number +
-                      changedCar?.properties.tires.number
-              ) / 36).toFixed(0)}
+          $ {tires}
           </span>
         </div>
-        <div className={styles.tableRow}>
+         <div className={styles.tableRow}>
           <span className={styles.tableItem}>Додаткове обладнання</span>
           <span className={`${styles.tableItem} spacing`}>
-            $ {(parseInt(changedCar?.properties.safety_net.formula.number +
-                      changedCar?.properties.armored_film.number +
-                      changedCar?.properties.carpets.number +
-                      changedCar?.properties.motor_protection_month.formula.number
-
-              ) / 36).toFixed(0)}
+            $ {aditionals}
           </span>
         </div>
         <div className={styles.tableRow}>
           <span className={styles.tableItem}>Сервіс Drivovo (Супровід страхових випадків, підмінне авто, Драйвер ТО, СТО, Доступ в комʼюніті Drivovo Pride, Дисконтний клуб Drivovo Loyalty, Trade IN твого старого авто) </span>
           <span className={`${styles.tableItem} spacing`}>
-          $ {
-            //parseInt(ownerThreeYearsCost * 0.13 / 36).toFixed(0)
-          parseFloat((parseFloat(drivovoPrice) / 36).toFixed(0) ) - 
-          parseFloat ( (parseFloat(ownerThreeYearsCost) / 36).toFixed(0) ) - 3
-          }
+          $ {service}
           </span> 
-        </div> */}
+        </div>
        
         <div className={styles.tableRowSubTitle}>
           <span className={styles.tableItem}>Вартість підписки на місяць</span>

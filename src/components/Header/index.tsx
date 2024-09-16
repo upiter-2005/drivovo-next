@@ -1,20 +1,42 @@
-'use client'
 
+import { Client } from "@notionhq/client"
+const notion = new Client({ auth: process.env.NOTION_AUTH })
+const databaswId = process.env.NOTION_DB_ID
 import styles from "./Header.module.scss"
 import Link from  'next/link'
 import Image from 'next/image'
 import logo from '@/assets/img/main-logo.svg'
 import mnuBtn from '@/assets/img/bar.svg'
 
- const Header = function Header() {
-  
+
+ export const Header:React.FC = async() => {
+
+  const cars: any = await notion.databases.query({
+    database_id: databaswId || '',
+    sorts: [
+      {
+        property: "Name", 
+        direction: "ascending",
+      },
+    ],
+    filter: {
+      property: "Status",
+      status: {
+        equals: 'Done'
+      }
+    },
+  });
+
+  if(!cars.results) return(<p>Error</p>)
   return (
   
       <header className={styles.headerWrapper}>
       
         <div className={styles.header}>
           <Link href="https://drivovo.com" className={styles.logo}><Image src={logo} width={150} height={56} alt="" /></Link>
-          <a href="#"><Image src={mnuBtn} className={styles.bar} width={33} height={33} alt="Drivovo" onClick={()=>console.log('open mnu')} /></a>
+          <a href="#"><Image src={mnuBtn} className={styles.bar} width={33} height={33}       alt="Drivovo" 
+            //onClick={()=>console.log('open mnu')} 
+          /></a>
           <div className={styles.rightHeader}>
               <ul className={styles.topMnuList}>
               
@@ -25,8 +47,8 @@ import mnuBtn from '@/assets/img/bar.svg'
                     </svg>
                       </a>
                       <ul className={styles.childMnu}>
-                      {/* {cars?.filter(obj => obj.properties?.Footer?.select?.name === "+").map((obj, i) =>
-                        <li key={i}><Link to={`/offer/${obj.properties.URL.rich_text[0]?.plain_text}`} key={obj.url}>{obj.properties.car_name.rich_text[0].plain_text}</Link></li>)} */}
+                      {cars.results.map((obj: any, i: number) =>
+                        <li key={i}><Link href={`/car/${obj.properties.URL.rich_text[0].plain_text}`} key={obj.url}>{obj.properties.car_name.rich_text[0].plain_text}</Link></li>)}
                           
                       </ul>
                   </li>

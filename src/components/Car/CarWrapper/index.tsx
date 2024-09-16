@@ -1,10 +1,13 @@
-'use client'
+
 import { TopData } from "../TopData";
 import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
 import {startFundCount} from "@/helpers/startFundCount"
-import { useEffect } from "react";
 import { CarBlock2 } from "../CarBlock2";
 import { ICarTable1 } from "../CarTable1";
+import { DownloadSchedule } from "../DownloadSchedule";
+import { CarTable2 } from "../CarTable2";
+import { InfoBlock } from "../InfoBlock";
+import { Notice1 } from "../Notice1";
 interface ICarWrapper {
   car: any
 }
@@ -12,14 +15,12 @@ interface ICarWrapper {
 export const CarWrapper:React.FC<ICarWrapper> = ({car}) => {
   const calcInstance = ownThreeYearsCount(car);
 
-  useEffect(()=> {
-    console.log(calcInstance);
-    console.log(car);
-  }, [])
+
 
 const maintenance_for_calculation = car.maintenance.formula.number;
 const carName = car.car_name.rich_text[0].plain_text;
 const coverFiles = car.Cover.files[0].file.url;
+const hubspot_cover = car.hubspot_cover.files[0].file.url;
 const photo = car.Photo.files;
 const edited_time = car.edited_time.formula.date.start;
 const sandpulse_form = car.sandpulse_form.rich_text[0].plain_text;
@@ -39,6 +40,7 @@ const video = car.video.rich_text[0]?.plain_text;
 
 const car_price_ex_showroom = car.car_price_ex_showroom.number;
 const pension_fund = car.pension_fund.formula.number;
+const osago = car.osago.formula.number;
 const insurance_1_year = car.insurance_1_year.formula.number;
 const registration = car.registration.formula.number;
 const luxury_tax = car.luxury_tax.number;
@@ -56,7 +58,7 @@ const maintenance = car.maintenance.formula.number;
 const insurance_2_year = car.insurance_2_year.formula.number;
 
 const price = startFundCount(car)
-console.log(price)
+
 
   return(
     <>
@@ -87,7 +89,42 @@ console.log(price)
         name={carName}
         price={calcInstance.pricePerMonthStandart}
         subscribeAvto={calcInstance.subscriptionAvto}
-       />   
+        taxes={calcInstance.taxes}
+        osago={calcInstance.osago}
+        maintenance={calcInstance.maintenance}
+        tires={calcInstance.tires}
+        aditionals={calcInstance.aditionals}
+        service={calcInstance.service}
+       />  
+      <DownloadSchedule
+        cover={hubspot_cover}
+        sendPulse={sandpulse_form}
+      />  
+      <CarTable2
+        name={carName}
+        carpet={carpets}
+        car_price_ex_showroom={car_price_ex_showroom}
+        tires={tires}
+        startFund={calcInstance.startFund}
+        ownerThreeYearsCost={calcInstance.ownerThreeYearsCost}
+        pension_fund={pension_fund}
+        kasko={insurance_1_year}
+        osago={osago}
+        registration={registration}
+        luxury_tax={luxury_tax}
+        armored_film={armored_film}
+        insurance_2_year={insurance_2_year}
+        maintenance={maintenance}
+        osago_2_year={osago_2_year}
+        luxury_tax_2_years={luxury_tax_2_years}
+        tire_service={tire_service}
+        pricePerMonthStandart={calcInstance.pricePerMonthStandart}
+        garanty={calcInstance.garanty}
+        lastPayment={calcInstance.lastPayment}
+        drivovoPrice={calcInstance.drivovoPrice}
+      />  
+      <InfoBlock />
+      <Notice1 />
     </>
     
   )

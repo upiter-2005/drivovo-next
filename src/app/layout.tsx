@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
 import {Comfortaa} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const comfortaa = Comfortaa({ subsets: ["cyrillic"], weight: ['300', '400', '500', '600', '700'] })
+const comfortaa = Comfortaa({ 
+  subsets: ["cyrillic"], 
+  weight: ['300', '400', '500', '600', '700'],
+  display: "swap"
+ })
 
 
 

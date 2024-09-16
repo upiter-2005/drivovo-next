@@ -13,7 +13,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.id
 
-  const car = await notion.databases.query({
+  const car: any = await notion.databases.query({
     database_id: databaswId || '',
     filter: {
       property: "URL",
@@ -24,9 +24,32 @@ export async function generateMetadata(
   });
 
   return {
-    title: 'title',
+    title: car.results[0].properties.Name,
   }  
 }
+
+
+export async function generateStaticParams() {
+  const cars: any = await notion.databases.query({
+    database_id: databaswId || '',
+    sorts: [
+      {
+        property: "Name", 
+        direction: "ascending",
+      },
+    ],
+    filter: {
+      property: "Status",
+      status: {
+        equals: 'Done'
+      }
+    },
+  });
+  return cars.results.map((car: any) => ({
+    id: car.properties.URL.rich_text[0].plain_text,
+  }))
+}
+
 
 export default async function CarPage ({ params: {id} }: {params: {id: string}})  {
 
