@@ -198,3 +198,122 @@
       
   }
 }
+
+@media (max-width: 992px){
+    .box{
+        padding: 0;
+    }
+    .offer_1{
+        flex-direction: column;
+        .left{
+           
+            width: 100%;
+            .zoom{
+                display: none;
+            }
+            
+            .foto_squre{
+                width: 100%;
+                gap: 0;
+                position: relative;
+                top: -0;
+                &Item{
+                    width: 25%;
+                    height: 71px;
+                    overflow: hidden;
+                    border-radius: 0;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+            
+            .sliderItem{
+                width: 100%;
+                height: 245px;
+                overflow: hidden;
+                border-radius: 0px;
+            }
+            .sliderTopImg{
+                width: 100%!important;
+                height: 100%!important;
+                object-fit: cover;
+            }
+            .slideNumWrapper{
+                color: #000;
+                text-align: left;
+                font-size: 18px; 
+                position: absolute;
+                top: 70%;
+                left: 16px;
+                width: 100%;
+                .digits{
+                    font-size: 14px;
+                    padding: 6px 10px;
+                    width: auto;
+                }
+            }
+        }
+        .right{
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-bottom: 10px;
+            text-align: left;
+            width: 100%;
+            .date{
+                color: #7D7D7D;
+                font-size: 19px;
+                line-height: 23px;
+                margin-bottom: 24px;
+            }
+            .title{
+                color: #23262A;
+                font-size: 32px!important;
+                line-height: 28px!important;
+                margin-bottom: 10px;
+            }
+            .descr{
+                color: #23262A;
+                max-width: 373px!important;
+                font-size: 17px;
+                line-height: 135%!important;
+                margin-bottom: 4px!important;
+            }
+            .price{
+                font-size: 32px!important;
+            }
+            .perMonth{
+                margin-top: 0;
+                margin-bottom: 14px!important;
+            }
+            .garanty{
+                font-size: 17px!important;
+                margin-bottom: 40px!important;
+            }
+            .titleBullet{
+                font-size: 17px!important;
+                margin-bottom: 16px!important;
+            }
+            .bullets{
+                .title{
+                    font-size: 17px!important;
+                    
+                }
+                .item{
+                    font-size: 17px!important;
+                    img{
+                        width: 36px!important;
+                        margin-right: 13px!important;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 992px){
+ 
+
+    
+}

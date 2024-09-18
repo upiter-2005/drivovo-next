@@ -4,6 +4,7 @@ import GoogleTagManager from '@magicul/next-google-tag-manager'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FacebookPixel } from "@/components/FacebookPixel";
+import { Suspense } from "react";
 
 const comfortaa = Comfortaa({ 
   subsets: ["cyrillic"], 
@@ -20,11 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       {/* <FacebookPixel /> */}
+      <Suspense><FacebookPixel /></Suspense>
+       
        <script src="https://www.youtube.com/iframe_api" async ></script>
 
       <body className={`${comfortaa.className}`}>
-        {/* <GoogleTagManager id='GTM-MTBLB66' /> */}
+        <Suspense><GoogleTagManager id='GTM-MTBLB66' /></Suspense>  
       
         <main>
           <Header />

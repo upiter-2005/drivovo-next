@@ -92,6 +92,9 @@
 }
 
 @media (max-width: 992px){
+    .box{
+        padding: 0;
+    }
       .videoBlock{
         padding-top: 60px;
         flex-direction: column;

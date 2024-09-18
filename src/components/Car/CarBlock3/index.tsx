@@ -10,7 +10,7 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover }) => {
   return(
   <>
     <section className={styles.titleSection}>
-      <h2>
+      <h2 className={styles.customH2}>
         Будуємо стосунки довжиною в <span>Життя</span>
       </h2>
       <p>Та надаємо потужний бустер для розвитку. </p>
@@ -21,7 +21,7 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover }) => {
       <img src="/img/seo.jpeg" alt="" />
     </div>
     <div className={styles.leftPart}>
-      <h2>
+      <h2 className={styles.customH2}>
         Наша ціль — звільнити час та думки людей, які розвивають бізнес та технології, надати їм
         швидкості та комфорту в житті.
       </h2>
@@ -35,7 +35,7 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover }) => {
   {/* <div className={styles.driveEasy}>Drive IT easy!</div> */}
   
   <section className={styles.titleSection}>
-    <h2 className="ikigay_title">
+    <h2 className={styles.customH2}>
       Drivovo - ікігай твого автомобіля
     </h2>
   </section>

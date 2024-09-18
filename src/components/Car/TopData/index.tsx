@@ -6,6 +6,7 @@ import clock from "@/assets/img/clock-ico.svg"
 import red_check from "@/assets/img/red-check.svg"
 import Slider from 'react-slick'
 import { useState } from 'react'
+import { Modal } from '../Modal'
 
 interface ICarObj {
   cover?: string
@@ -18,31 +19,23 @@ interface ICarObj {
 }
 
 function SampleNextArrow(props: any) {
-  const {  onClick } = props;
+  const {  onClick } = props
   return (
-    <div
-      className={styles.nextArrow}
-      onClick={onClick}
-    >
-      <img src="/img/sl-right.png" alt="drivovo" />
-    </div>
-  );
+      <img src="/img/sl-right.png" alt="drivovo" className='sliderArrow arrowRight' onClick={onClick} />
+  )
 }
 
 function SamplePrevArrow(props: any) {
-  const { onClick } = props;
+  const { onClick } = props
   return (
-    <div
-    className={styles.prevArrow}
-      onClick={onClick}
-    > <img src="/img/sl-left.png" alt="" /></div>
-  );
+    <img src="/img/sl-left.png" alt="" className='sliderArrow arrowLeft' onClick={onClick} />
+  )
 }
-
 
 export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, sandpulseForm, photo, price}) => {
 
   const [activeNumSlide, setActiveNumSlide] = useState<number>(1)
+  const [isModal, setIsModal] = useState<boolean>(false)
 
   const topSlider = {
     dots: false,
@@ -50,7 +43,6 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    //adaptiveHeight: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     beforeChange: (current: number, next: number) => {
@@ -62,29 +54,27 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
     <div className={styles.appContainer}>
       <div className={styles.box}>
         <div className={styles.offer_1}>
-          <div className={`${styles.left} offerSlider`} 
-            //onClick={openModalArea}
-           >
-              {/* <img src="/img/zoom.png" className={styles.zoom} alt="drivovo zoom" /> */}
+          <div className={`${styles.left} offerSlider`} >
+              <img src="/img/zoom.png" className={styles.zoom} alt="drivovo zoom" onClick={()=>setIsModal(true)} /> 
               <Slider {...topSlider} className={`${styles.topCarousel} mainSlider` }>
-                  {/* <div key="mnphImg1" style={{ width: "100%" }} className={styles.sliderItem} >
-                      <img src={car?.properties.Cover.files[0].file?.url} 
+                  <div key="mnphImg1" style={{ width: "100%" }} className={styles.sliderItem} >
+                      <img src={cover} 
                       className={styles.sliderTopImg} 
                       alt="" />
-                  </div> */}
+                  </div>
                 {photo.map((img, idx) => (
                   <div  key={idx} style={{ width: "100%" }} className={styles.sliderItem} >
-                    <img src={img.file?.url} alt={img} className={styles.sliderTopImg}  />
+                    <img src={img.file.url} alt={img} className={styles.sliderTopImg}  />
                   </div>
                 ))}
             </Slider>
           
-            {/* <div className={styles.slideNumWrapper}>
-               <div className={styles.digits}> {activeNumSlide }/{images?.length + 1}</div>
+            <div className={styles.slideNumWrapper}>
+               <div className={styles.digits}> {activeNumSlide }/{photo?.length + 1}</div>
              
-            </div> */}
+            </div>
            
-            {/* {isModal && <Modal currentIndex={activeNumSlide} images={images} />} */}
+            {isModal && <Modal currentIndex={activeNumSlide} images={photo} onClick={()=>setIsModal(false)} />}
             
             <div className={styles.foto_squre}>
             {photo?.map((img, idx) => (
@@ -92,7 +82,7 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
                     <img src={img.file?.url}
                      alt={`Drivovo - ${carName}`}
                     // idx={idx}
-                     //onClick={e => dispatch(openModal())}
+                      onClick={()=>setIsModal(true)} 
                       />
                   </div>
                 ))}

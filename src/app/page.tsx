@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 import { Client } from "@notionhq/client";
 import { Metadata } from "next";
 import CarCard from "@/components/CarCard";
+import { AvtoparkTop } from "@/components/AvtoparkTop";
+import generateRssFeed from "@/utils/rss";
 const notion = new Client({ auth: process.env.NOTION_AUTH });
 const databaswId = process.env.NOTION_DB_ID;
 
@@ -31,12 +33,15 @@ export default async function Home() {
     },
   });
 
+  generateRssFeed(cars.results)
+
 
 
   if(!cars) return "not found"
 
   return (
     <div className={styles.avtoparkWrapper}>
+      <AvtoparkTop />
       {cars.results.map((car, i:number) =>  <CarCard key={i} {...car} /> )}
       
     </div>

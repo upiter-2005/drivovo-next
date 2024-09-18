@@ -56,10 +56,11 @@ $accent: #FF5D04;
                     display: block;
                     margin: 6px 0;
                 }
-                p{
+                .block_2_title{
                     color: #23262A;
                     font-size: 24px;
                     font-weight: 700; 
+                    margin-bottom: 16px;
                 }
                 span{
                     color: #23262A;
@@ -85,6 +86,7 @@ $accent: #FF5D04;
                     display: flex;
                     gap: 12px;
                     flex-wrap: wrap;
+                    margin-top: 16px;
                     a{
                         color: #23262A;
                         font-size: 15px;
@@ -111,7 +113,7 @@ $accent: #FF5D04;
     }
 }
 @media (max-width: 768px){
-    footer{
+    .footer_box{
         .copy{
             margin-top: 30px;
             margin-bottom: 32px;
@@ -216,6 +218,7 @@ $accent: #FF5D04;
                         color: #23262A;
                         font-size: 24px;
                         font-weight: 700; 
+                        margin: 20px 0 ;
                     }
                 }   
             }

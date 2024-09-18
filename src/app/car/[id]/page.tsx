@@ -45,6 +45,9 @@ export async function generateStaticParams() {
       }
     },
   });
+
+
+
   return cars.results.map((car: any) => ({
     id: car.properties.URL.rich_text[0].plain_text,
   }))
