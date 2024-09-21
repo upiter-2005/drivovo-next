@@ -42,8 +42,11 @@
               width: 48%;
               overflow: hidden;
               border-radius: 12px;
+              max-height: 178px;
               img{
                   width: 100%;
+                  height: auto;
+                  object-fit: cover;
                   cursor: pointer;
               }
           }
@@ -89,7 +92,6 @@
       text-align: left;
       width: 34%;
       position: relative;
-      overflow: clip;
       padding-bottom: 70px;
       .right_sticky{
           position: sticky;

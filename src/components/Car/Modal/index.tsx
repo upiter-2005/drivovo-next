@@ -2,6 +2,7 @@
 import styles from "./Modal.module.scss"
 import "@/assets/css/comunity.scss"
 import Slider from 'react-slick'
+import { ImageObj } from "../TopData"
 
 function SampleNextArrow(props: any) {
   const {  onClick } = props
@@ -19,7 +20,7 @@ function SamplePrevArrow(props: any) {
 
 interface IModal {
   currentIndex: number
-  images: any[]
+  images: ImageObj[]
   onClick: () => void
 }
 
@@ -47,7 +48,7 @@ export const Modal:React.FC<IModal> = ({currentIndex, images, onClick}) => {
         <Slider {...modalSlider} className={` modalSlider` } >
 
              {images?.map((obj, i) => 
-                <img src={obj.file.url} alt="drivovo" key={i} className={styles.activeImg}  />
+                <img src={obj.full_image_url} alt="drivovo" key={i} className={styles.activeImg}  />
             )} 
             </Slider>
         </div>

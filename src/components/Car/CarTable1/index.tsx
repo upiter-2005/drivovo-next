@@ -64,7 +64,7 @@ export const ICarTable1:React.FC<ICarTable1> = ({name, price, subscribeAvto, tax
           <span className={`${styles.tableItem} ${styles.tableItemNew}`}>Технічне обслуговування
           <Image src={check} alt="" /></span>
           <span className={`${styles.tableItem} ${styles.tableItemNew}`}>
-          Інвестиції в Drovovo 10-12% річних в валюті
+          Інвестиції в Drivovo 10-12% річних в валюті
           <Image src={check} alt="" />
           </span>
         </div>
@@ -142,7 +142,7 @@ export const ICarTable1:React.FC<ICarTable1> = ({name, price, subscribeAvto, tax
           <Image src={check} alt="" />
           </span>
           <span className={`${styles.tableItem} ${styles.tableItemNew}`}>
-          Інвестиції в Drovovo 10-12% річних в валюті
+          Інвестиції в Drivovo 10-12% річних в валюті
           <Image src={check} alt="" />
           </span>
           <span className={`${styles.tableItem} ${styles.tableItemNew}`}>

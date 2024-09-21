@@ -25,6 +25,7 @@ export async function generateMetadata(
 
   return {
     title: car.results[0].properties.Name,
+    description: '...'
   }  
 }
 
@@ -66,13 +67,20 @@ export default async function CarPage ({ params: {id} }: {params: {id: string}})
     }
   });
 
+  const media: any = await fetch(`https://drivovo.com/wp-json/wp/v2/offers?slug=${id}`).then(res => res.json())
 
-  if(!car) return(<p>Car not found</p>)
+
+
+  if(!car || !media[0].ACF.gallery) return(<p>Car not found</p>)
   
   return (
     
     <div>
-      <CarWrapper car={car.results[0].properties}/>
+      <CarWrapper 
+        car={car.results[0].properties} 
+        id={car.results[0].id} 
+        media={media[0].ACF.gallery}
+        />
     </div>
   )
 }

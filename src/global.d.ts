@@ -912,3 +912,9 @@ export interface Annotations12 {
   code: boolean
   color: string
 }
+
+declare global {
+  interface Window {
+    fbq?: any;
+  }
+}

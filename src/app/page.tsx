@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import { Client } from "@notionhq/client";
 import { Metadata } from "next";
@@ -9,11 +8,10 @@ const notion = new Client({ auth: process.env.NOTION_AUTH });
 const databaswId = process.env.NOTION_DB_ID;
 
 export const metadata: Metadata = {
-  title: '...',
-  description: '...',
+  title: 'Drivovo',
+  description: 'Drivovo offers',
 }
 
-export const revalidate = 30
 
 export default async function Home() {
 
@@ -35,14 +33,12 @@ export default async function Home() {
 
   generateRssFeed(cars.results)
 
-
-
   if(!cars) return "not found"
 
   return (
     <div className={styles.avtoparkWrapper}>
       <AvtoparkTop />
-      {cars.results.map((car, i:number) =>  <CarCard key={i} {...car} /> )}
+      {cars.results.map((car, i:number) =>  <CarCard key={i} obj={car} /> )}
       
     </div>
   );

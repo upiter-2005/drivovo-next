@@ -305,6 +305,9 @@
     } 
     .slick-list{
       height: 260px!important;
+      .slick-slide{
+        margin: 0;
+      }
     }
   }
 }

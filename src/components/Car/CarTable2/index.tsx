@@ -80,7 +80,7 @@ export const CarTable2:React.FC<ICarTable2> = ({
         <div className={styles.tableRow}>
           <span className={styles.tableItem}>КАСКО перший рік</span>
           <span className={`${styles.tableItem} spacing`}>
-            $ {formatCommas(kasko)}.00
+            $ {(kasko).toFixed(0)}.00
           </span>
         </div>
     <div className={styles.tableRow}>
@@ -125,20 +125,20 @@ export const CarTable2:React.FC<ICarTable2> = ({
         </div>
         <div className={styles.tableRowSubTitle}>
           <span className={styles.tableItem}>Початкові вкладення в автомобіль</span>
-          <span className={styles.tableItem}>${formatCommas(startFund)}</span>
+          <span className={styles.tableItem}>${(startFund).toFixed(0)}.00</span>
         </div> 
       
 
         <div className={styles.tableRow}>
           <span className={styles.tableItem}>КАСКО другий та третій рік</span>
           <span className={`${styles.tableItem} spacing`}>
-            $ {formatCommas(insurance_2_year)}
+            $ {(insurance_2_year).toFixed(2)}
           </span>
         </div>
         <div className={styles.tableRow}>
           <span className={styles.tableItem}>ТО за три роки</span>
           <span className={`${styles.tableItem} spacing`}>
-            $ {formatCommas(maintenance)}.00
+            $ {(maintenance).toFixed(0)}.00
           </span>
         </div>
          <div className={styles.tableRow}>
@@ -165,12 +165,12 @@ export const CarTable2:React.FC<ICarTable2> = ({
        <div className={styles.tableRow}>
           <span className={styles.tableItem}>Вартість власного капіталу за 3 роки (7%)</span>
           <span className={`${styles.tableItem} spacing`}>
-            $ {formatCommas(((startFund / 100) * 21).toFixed(2))}
+            $ {(((startFund / 100) * 21).toFixed(0))}.00
           </span>
         </div>
        <div className={styles.tableRowSubTitle}>
           <span className={styles.tableItem}>Вартість володіння автомобілем за 3 роки</span>
-          <span className={styles.tableItem}>${formatCommas(ownerThreeYearsCost)}</span>
+          <span className={styles.tableItem}>${(ownerThreeYearsCost).toFixed(0)}.00</span>
         </div>
 
          <div className={styles.tableRow}>
@@ -209,13 +209,13 @@ export const CarTable2:React.FC<ICarTable2> = ({
        <div className={styles.tableRow}>
           <span className={styles.tableItem}>Вартість викупу через 3 роки</span>
           <span className={`${styles.tableItem} spacing`}>$ 0,0</span>
-          <span className={`${styles.tableItem} spacing`}>$ {formatCommas(lastPayment.toFixed(0))}</span>
+          <span className={`${styles.tableItem} spacing`}>$ {(lastPayment.toFixed(0))}</span>
         </div>
        <div className={styles.tableRow}>
           <span className={styles.tableItem}>Вартість володіння через 3 роки</span>
-          <span className={`${styles.tableItem} spacing`}>$ {formatCommas(ownerThreeYearsCost)}</span>
+          <span className={`${styles.tableItem} spacing`}>$ {(ownerThreeYearsCost).toFixed(0)}.00</span>
           <span className={styles.tableItem}>
-            ${formatCommas(parseInt(drivovoPrice).toFixed(0))}
+            ${(parseInt(drivovoPrice).toFixed(0))}.00
           </span>
         </div>
 

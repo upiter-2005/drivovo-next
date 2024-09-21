@@ -7,15 +7,29 @@ import red_check from "@/assets/img/red-check.svg"
 import Slider from 'react-slick'
 import { useState } from 'react'
 import { Modal } from '../Modal'
+import { trackFbPurchase } from '@/helpers/fb'
+
+export type ImageObj = {
+  id: number
+  title: string
+  caption: string
+  full_image_url: string
+  thumbnail_image_url: string
+  large_srcset: string
+  medium_srcset: string
+  url: string
+  target: string
+}
 
 interface ICarObj {
-  cover?: string
+  id: string
   carName?: string
   editedTime?: string
   sandpulseForm?: string
   photo: any[],
   price?: number,
-  calc?: any
+  calc?: any,
+  media: ImageObj[]
 }
 
 function SampleNextArrow(props: any) {
@@ -28,11 +42,13 @@ function SampleNextArrow(props: any) {
 function SamplePrevArrow(props: any) {
   const { onClick } = props
   return (
-    <img src="/img/sl-left.png" alt="" className='sliderArrow arrowLeft' onClick={onClick} />
+    <img src="/img/sl-left.png" alt="drivovo" className='sliderArrow arrowLeft' onClick={onClick} />
   )
 }
 
-export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, sandpulseForm, photo, price}) => {
+export const TopData:React.FC<ICarObj> = ({id, calc,  carName, editedTime, sandpulseForm, photo, price, media}) => {
+
+console.log(media);
 
   const [activeNumSlide, setActiveNumSlide] = useState<number>(1)
   const [isModal, setIsModal] = useState<boolean>(false)
@@ -58,14 +74,14 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
               <img src="/img/zoom.png" className={styles.zoom} alt="drivovo zoom" onClick={()=>setIsModal(true)} /> 
               <Slider {...topSlider} className={`${styles.topCarousel} mainSlider` }>
                   <div key="mnphImg1" style={{ width: "100%" }} className={styles.sliderItem} >
-                      <img src={cover} 
+                      <img src={media[0].full_image_url} 
                       className={styles.sliderTopImg} 
                       alt="" />
                   </div>
-                {photo.map((img, idx) => (
-                  <div  key={idx} style={{ width: "100%" }} className={styles.sliderItem} >
-                    <img src={img.file.url} alt={img} className={styles.sliderTopImg}  />
-                  </div>
+                {media.map((img, idx) => (
+                  idx !== 0 && ( <div  key={idx} style={{ width: "100%" }} className={styles.sliderItem} >
+                    <img src={img.full_image_url} alt='drivovo' className={styles.sliderTopImg}  />
+                </div>)
                 ))}
             </Slider>
           
@@ -74,22 +90,25 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
              
             </div>
            
-            {isModal && <Modal currentIndex={activeNumSlide} images={photo} onClick={()=>setIsModal(false)} />}
+            {isModal && <Modal currentIndex={activeNumSlide} images={media} onClick={()=>setIsModal(false)} />}
             
             <div className={styles.foto_squre}>
-            {photo?.map((img, idx) => (
-                  <div  key={idx}  className={styles.foto_squreItem} >
-                    <img src={img.file?.url}
-                     alt={`Drivovo - ${carName}`}
-                    // idx={idx}
-                      onClick={()=>setIsModal(true)} 
-                      />
-                  </div>
+            {media.map((img: any, idx: number) => (
+              idx !== 0 && (
+                <div  key={idx}  className={styles.foto_squreItem} >
+                <img src={img.full_image_url}
+                 alt={`Drivovo - ${carName}`}
+                // idx={idx}
+                  onClick={()=>setIsModal(true)} 
+                  />
+              </div>
+              )
+                
                 ))}
             </div>
 
           </div>
-          {/* {(isModalSlider && !isMobile) ?  (<ModalSlider images={images} />) : ('')} */}
+      
           <div className={styles.right}>
             <div className={styles.right_sticky}>
               <div className={styles.date}>Оновлено {editedTime?.substr(11,8)} {editedTime?.substr(0,10)} </div>
@@ -100,7 +119,7 @@ export const TopData:React.FC<ICarObj> = ({calc, cover, carName, editedTime, san
            
               <p className={styles.perMonth}>щомісячний платіж</p>
             </div>
-            <a href="#" className={`${styles.offerBtn} ${sandpulseForm} `} >Замовити авто</a>
+            <a href="#" className={`${styles.offerBtn} ${sandpulseForm} `} onClick={()=>trackFbPurchase(id, price)}>Замовити авто</a>
 
           
             

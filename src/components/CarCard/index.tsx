@@ -1,10 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import styles from "./CarCard.module.scss";
-import SkeletonImage from "@/components/Skeleton";
-import Link from 'next/link'
-// import ModalForm from "../ModalForm"
 
-export default function CarCard({...obj}) {
+import styles from "./CarCard.module.scss";
+import Link from 'next/link'
+import { CardImage } from "../Car/CardImage";
+
+interface ICarCard {
+  obj: any
+}
+
+ const CarCard:React.FC<ICarCard> = ({obj}) => {
 
   return (
     <div className={styles.carItem}>
@@ -15,13 +19,12 @@ export default function CarCard({...obj}) {
 
     {!obj.properties.Cover.files[0].file.url
      ? 
-    // (<SkeletonImage />)
      (<p>Loading</p>)
      : 
-    (<img src={obj.properties.Cover.files[0].file.url}  style={{
-      width: '100%',
-      height: 'auto',
-    }} alt={`Drivovo ${obj.properties.label_status.select.name}`} />)
+    (
+      <CardImage slug={obj.properties.URL.rich_text[0].plain_text} />
+     
+    )
     }
     
     <p className={styles.carName}>{obj?.properties.car_name.rich_text[0].plain_text}</p>
@@ -41,13 +44,12 @@ export default function CarCard({...obj}) {
     </div>
  
 
-    {obj.properties.URL?.rich_text[0]?.plain_text === undefined ?
-     <Link href={`/car/${obj.properties.URL.rich_text[0].plain_text}`} className="deActiveBtn" > Coming soon</Link>
-      :
-       <a href={`/car/${obj.properties.URL.rich_text[0].plain_text}`} >Подивитись</a> }
+    
+       <Link href={`/car/${obj.properties.URL.rich_text[0].plain_text}`} >Подивитись</Link>
   
  
 </div>
 
   );
 }
+export default CarCard

@@ -1,5 +1,5 @@
+import { ImageObj, TopData } from "../TopData";
 
-import { TopData } from "../TopData";
 import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
 import {startFundCount} from "@/helpers/startFundCount"
 import { CarBlock2 } from "../CarBlock2";
@@ -12,18 +12,19 @@ import { FrameHubspot } from "../FrameHubspot";
 import { Comunity } from "@/components/Comunity";
 import { Reviews } from "@/components/Reviews";
 import { CarBlock3 } from "../CarBlock3";
+
 interface ICarWrapper {
+  id: string
   car: any
+  media: ImageObj[]
 }
 
-export const CarWrapper:React.FC<ICarWrapper> = ({car}) => {
+export const CarWrapper:React.FC<ICarWrapper> = ({id, car, media}) => {
+
   const calcInstance = ownThreeYearsCount(car);
-
-
 
 const maintenance_for_calculation = car.maintenance.formula.number;
 const carName = car.car_name.rich_text[0].plain_text;
-const coverFiles = car.Cover.files[0].file.url;
 const hubspot_cover = car.hubspot_cover.files[0].file.url;
 const photo = car.Photo.files;
 const edited_time = car.edited_time.formula.date.start;
@@ -62,21 +63,23 @@ const maintenance = car.maintenance.formula.number;
 const insurance_2_year = car.insurance_2_year.formula.number;
 const bottom_cover = car.bottom_cover.files[0].file.url;
 
-const price = startFundCount(car)
 
 
   return(
     <>
-    
+   
     <TopData 
-        cover={coverFiles}
+        id={id}
         carName={carName}
         editedTime={edited_time}
         sandpulseForm={sandpulse_form}
         photo={photo}
         price={calcInstance.pricePerMonthStandart}
         calc={calcInstance}
+        media={media}
       />
+   
+   
       <CarBlock2
         title={title}
         text={text}
