@@ -1,7 +1,5 @@
 import { ImageObj, TopData } from "../TopData";
-
 import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
-import {startFundCount} from "@/helpers/startFundCount"
 import { CarBlock2 } from "../CarBlock2";
 import { ICarTable1 } from "../CarTable1";
 import { DownloadSchedule } from "../DownloadSchedule";
@@ -23,57 +21,53 @@ export const CarWrapper:React.FC<ICarWrapper> = ({id, car, media}) => {
 
   const calcInstance = ownThreeYearsCount(car);
 
-const maintenance_for_calculation = car.maintenance.formula.number;
-const carName = car.car_name.rich_text[0].plain_text;
-const hubspot_cover = car.hubspot_cover.files[0].file.url;
-const photo = car.Photo.files;
-const edited_time = car.edited_time.formula.date.start;
-const sandpulse_form = car.sandpulse_form.rich_text[0].plain_text;
-const residual_value = car.residual_value.number;
-
-const title = car.Title.rich_text[0].plain_text;
-const text = car.Text.rich_text[0].text.content;
-const acceleration = car.acceleration.rich_text[0]?.plain_text;
-const power = car.power.rich_text[0].plain_text;
-const engine_capacity = car.engine_capacity.rich_text[0].plain_text;
-const engine_type = car.engine_type.select.name;
-const vehicle_interior = car.vehicle_interior.select.name;
-const drive_type = car.drive_type.select.name;
-const body_type = car.body_type.select.name;
-const fuel_consumption = car.fuel_consumption.number;
-const video = car.video.rich_text[0]?.plain_text;
-
-const car_price_ex_showroom = car.car_price_ex_showroom.number;
-const pension_fund = car.pension_fund.formula.number;
-const osago = car.osago.formula.number;
-const insurance_1_year = car.insurance_1_year.formula.number;
-const registration = car.registration.formula.number;
-const luxury_tax = car.luxury_tax.number;
-const tinted_glass = car.tinted_glass.formula.number;
-const tires = car.tires.number;
-const carpets = car.carpets.number;
-const safety_net = car.safety_net.formula.number;
-const radiator_protection = car.radiator_protection.number;
-const armored_film = car.armored_film.number;
-
-const tire_service = car.tire_service.formula.number;
-const luxury_tax_2_years = car.luxury_tax_2_years.number;
-const osago_2_year = car.osago_2_year.formula.number;
-const maintenance = car.maintenance.formula.number;
-const insurance_2_year = car.insurance_2_year.formula.number;
-const bottom_cover = car.bottom_cover.files[0].file.url;
-
+  const data = {
+    maintenance_for_calculation : car.maintenance.formula.number,
+    carName: car.car_name.rich_text[0].plain_text,
+    hubspot_cover: car.hubspot_cover.files[0].file.url,
+    photo: car.Photo.files,
+    edited_time: car.edited_time.formula.date.start,
+    sandpulse_form: car.sandpulse_form.rich_text[0].plain_text,
+    residual_value: car.residual_value.number,
+    title: car.Title.rich_text[0].plain_text,
+    text: car.Text.rich_text[0].text.content,
+    acceleration: car.acceleration.rich_text[0]?.plain_text,
+    power: car.power.rich_text[0].plain_text,
+    engine_capacity: car.engine_capacity.rich_text[0].plain_text,
+    engine_type: car.engine_type.select.name,
+    vehicle_interior: car.vehicle_interior.select.name,
+    drive_type: car.drive_type.select.name,
+    body_type: car.body_type.select.name,
+    fuel_consumption: car.fuel_consumption.number,
+    video: car.video.rich_text[0]?.plain_text,
+    car_price_ex_showroom: car.car_price_ex_showroom.number,
+    pension_fund: car.pension_fund.formula.number,
+    osago: car.osago.formula.number,
+    insurance_1_year: car.insurance_1_year.formula.number,
+    registration: car.registration.formula.number,
+    luxury_tax: car.luxury_tax.number,
+    tinted_glass: car.tinted_glass.formula.number,
+    tires: car.tires.number,
+    carpets: car.carpets.number,
+    safety_net: car.safety_net.formula.number,
+    radiator_protection: car.radiator_protection.number,
+    armored_film: car.armored_film.number,
+    tire_service: car.tire_service.formula.number,
+    luxury_tax_2_years: car.luxury_tax_2_years.number,
+    osago_2_year: car.osago_2_year.formula.number,
+    maintenance: car.maintenance.formula.number,
+    insurance_2_year: car.insurance_2_year.formula.number
+  }
 
 
   return(
     <>
-   
     <TopData 
         id={id}
-        carName={carName}
-        editedTime={edited_time}
-        sandpulseForm={sandpulse_form}
-        photo={photo}
+        carName={data.carName}
+        editedTime={data.edited_time}
+        sandpulseForm={data.sandpulse_form}
+        photo={data.photo}
         price={calcInstance.pricePerMonthStandart}
         calc={calcInstance}
         media={media}
@@ -81,20 +75,20 @@ const bottom_cover = car.bottom_cover.files[0].file.url;
    
    
       <CarBlock2
-        title={title}
-        text={text}
-        acceleration={acceleration}
-        power={power}
-        engine_capacity={engine_capacity}
-        engine_type={engine_type}
-        vehicle_interior={vehicle_interior}
-        drive_type={drive_type}
-        body_type={body_type}
-        fuel_consumption={fuel_consumption}
-        video={video}
+        title={data.title}
+        text={data.text}
+        acceleration={data.acceleration}
+        power={data.power}
+        engine_capacity={data.engine_capacity}
+        engine_type={data.engine_type}
+        vehicle_interior={data.vehicle_interior}
+        drive_type={data.drive_type}
+        body_type={data.body_type}
+        fuel_consumption={data.fuel_consumption}
+        video={data.video}
       />
       <ICarTable1
-        name={carName}
+        name={data.carName}
         price={calcInstance.pricePerMonthStandart}
         subscribeAvto={calcInstance.subscriptionAvto}
         taxes={calcInstance.taxes}
@@ -105,27 +99,29 @@ const bottom_cover = car.bottom_cover.files[0].file.url;
         service={calcInstance.service}
        />  
       <DownloadSchedule
-        cover={hubspot_cover}
-        sendPulse={sandpulse_form}
+        cover={data.hubspot_cover}
+        sendPulse={data.sandpulse_form}
+        media={media}
+        price={calcInstance.pricePerMonthStandart}
       />  
       <CarTable2
-        name={carName}
-        carpet={carpets}
-        car_price_ex_showroom={car_price_ex_showroom}
-        tires={tires}
+        name={data.carName}
+        carpet={data.carpets}
+        car_price_ex_showroom={data.car_price_ex_showroom}
+        tires={data.tires}
         startFund={calcInstance.startFund}
         ownerThreeYearsCost={calcInstance.ownerThreeYearsCost}
-        pension_fund={pension_fund}
-        kasko={insurance_1_year}
-        osago={osago}
-        registration={registration}
-        luxury_tax={luxury_tax}
-        armored_film={armored_film}
-        insurance_2_year={insurance_2_year}
-        maintenance={maintenance}
-        osago_2_year={osago_2_year}
-        luxury_tax_2_years={luxury_tax_2_years}
-        tire_service={tire_service}
+        pension_fund={data.pension_fund}
+        kasko={data.insurance_1_year}
+        osago={data.osago}
+        registration={data.registration}
+        luxury_tax={data.luxury_tax}
+        armored_film={data.armored_film}
+        insurance_2_year={data.insurance_2_year}
+        maintenance={data.maintenance}
+        osago_2_year={data.osago_2_year}
+        luxury_tax_2_years={data.luxury_tax_2_years}
+        tire_service={data.tire_service}
         pricePerMonthStandart={calcInstance.pricePerMonthStandart}
         garanty={calcInstance.garanty}
         lastPayment={calcInstance.lastPayment}
@@ -137,7 +133,8 @@ const bottom_cover = car.bottom_cover.files[0].file.url;
       <Comunity />
       <Reviews />
       <CarBlock3
-        bottom_cover={bottom_cover}
+        id={id}
+        bottom_cover={media}
       />
     </>
     

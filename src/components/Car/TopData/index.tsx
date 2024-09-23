@@ -48,7 +48,7 @@ function SamplePrevArrow(props: any) {
 
 export const TopData:React.FC<ICarObj> = ({id, calc,  carName, editedTime, sandpulseForm, photo, price, media}) => {
 
-console.log(media);
+
 
   const [activeNumSlide, setActiveNumSlide] = useState<number>(1)
   const [isModal, setIsModal] = useState<boolean>(false)
@@ -96,15 +96,13 @@ console.log(media);
             {media.map((img: any, idx: number) => (
               idx !== 0 && (
                 <div  key={idx}  className={styles.foto_squreItem} >
-                <img src={img.full_image_url}
-                 alt={`Drivovo - ${carName}`}
-                // idx={idx}
-                  onClick={()=>setIsModal(true)} 
-                  />
-              </div>
-              )
-                
-                ))}
+                  <img src={img.full_image_url}
+                  alt={`Drivovo - ${carName}`}
+                    onClick={()=>setIsModal(true)} 
+                    />
+                </div>
+                )
+              ))}
             </div>
 
           </div>

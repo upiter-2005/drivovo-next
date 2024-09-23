@@ -1,11 +1,15 @@
+'use client'
 /* eslint-disable @next/next/no-img-element */
+import { trackFbAddToCart } from "@/helpers/fb"
+import { ImageObj } from "../TopData"
 import styles from "./CarBloc3.module.scss"
 
 interface ICarBlock3 {
-  bottom_cover: string
+  id: string
+  bottom_cover: ImageObj[]
 }
 
-export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover }) => {
+export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover, id }) => {
 
   return(
   <>
@@ -32,7 +36,6 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover }) => {
       </div>
     </div>
   </section>
-  {/* <div className={styles.driveEasy}>Drive IT easy!</div> */}
   
   <section className={styles.titleSection}>
     <h2 className={styles.customH2}>
@@ -44,11 +47,10 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover }) => {
 
     <div className={styles.hbfContainer}>
             <p className={styles.title}>Замовити тест-драйв</p>
-            {/* <div id="hubspotFormBottom" className={styles.hubspotForm}></div> */}
-            <button className={`${styles.hubspotForm} ${styles.redBtn} sp_popup_47e55cb9-bd9e-42b5-84c4-eb25602b9154 `}>go drivovo</button>
+            <button className={`${styles.hubspotForm} ${styles.redBtn} sp_popup_47e55cb9-bd9e-42b5-84c4-eb25602b9154 `} onClick={()=>trackFbAddToCart(id)}>go drivovo</button>
         </div>
     <div className={styles.hbsp_box_img}>
-      <img src={bottom_cover} alt="" />
+      <img src={bottom_cover[4].full_image_url} alt="" />
     </div> 
   </div>
   </>

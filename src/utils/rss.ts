@@ -3,7 +3,6 @@ import fs from "fs";
 import RSS from "rss"
 
 export default async function generateRssFeed(allCars:any) {
-  console.log(allCars)
   const site_url = "https://test.noguchi.com.ua";
   // const site_url =
   //   process.env.NODE_ENV === "production"
