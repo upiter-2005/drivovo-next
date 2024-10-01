@@ -76,7 +76,7 @@ export const TopData:React.FC<ICarObj> = ({id, calc,  carName, editedTime, sandp
                   <div key="mnphImg1" style={{ width: "100%" }} className={styles.sliderItem} >
                       <img src={media[0].full_image_url} 
                       className={styles.sliderTopImg} 
-                      alt="" />
+                      alt="drivovo" />
                   </div>
                 {media.map((img, idx) => (
                   idx !== 0 && ( <div  key={idx} style={{ width: "100%" }} className={styles.sliderItem} >

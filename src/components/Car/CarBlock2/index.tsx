@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import YouTube from 'react-youtube'
 import styles from "./ICarBlock2.module.scss"
 import { useRef } from 'react'
@@ -15,7 +14,7 @@ interface ICarBlock2 {
   vehicle_interior: string
   drive_type: string
   body_type: string
-  fuel_consumption: string
+  fuel_consumption: number
   video: string
 }
 
@@ -24,8 +23,6 @@ const youTubeOpt = {
   width: "100%",
   enablejsapi: 1,
 }
-
-
 
 export const CarBlock2:React.FC<ICarBlock2> = ({title, text, acceleration, power, engine_capacity, engine_type,vehicle_interior, drive_type, body_type, fuel_consumption, video }) => {
   const videoYt = useRef() as any 
@@ -39,8 +36,6 @@ export const CarBlock2:React.FC<ICarBlock2> = ({title, text, acceleration, power
     }else{
       videoYt.current.internalPlayer.pauseVideo()
     }
-  
-    
   }
 
   return(

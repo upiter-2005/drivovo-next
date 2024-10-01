@@ -1,0 +1,158 @@
+
+.footer{
+    width: 100%;
+    .copy{
+        width: 100%;
+        text-align: center;
+        color: #23262A;
+        font-size: 13px;
+        line-height: 17px;
+        letter-spacing: -0.576px;
+        margin-top: 126px;
+        margin-bottom: 53px;
+    }
+    .footer_wrap{
+        padding: 55px 0 0;
+        max-width: 1435px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .block_1{
+            width: 300px;
+            text-align: center;
+            .tel{
+                color: FF5D04;
+                text-decoration: underline;
+                font-size: 25px;
+                font-weight: 400;
+            }
+            .soc_ico{
+                img{
+                    width: 37px;
+                    margin: 30px 4px;
+                }
+            }
+        }
+        .block_2{
+            width: 160px;
+            text-align: left;
+            a, span{
+                display: block;
+                margin: 6px 0;
+            }
+            p{
+                color: #23262A;
+                font-size: 24px;
+                font-weight: 700; 
+            }
+            span{
+                color: #23262A;
+                font-size: 17px;
+               
+            }
+            a{
+                color: FF5D04;
+                font-size: 17px;
+                margin: 6px 0;
+            }
+        }
+        .block_3{
+            width: 360px;
+            text-align: left;
+            a, span{
+                display: block;
+                margin: 6px 0;
+            }
+            a{
+                color: FF5D04;
+                font-size: 17px;
+            }
+            p{
+                color: #23262A;
+                font-size: 24px;
+                font-weight: 700; 
+            }
+        }
+    }
+}
+@media (max-width: 768px){
+    footer{
+        .copy{
+            margin-top: 30px;
+            margin-bottom: 32px;
+        }
+        .footer_wrap{
+            padding: 12px 20px;
+            flex-direction: column;
+            .block_1{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-bottom: 32px;
+                a{
+                    width: 47%;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .tel{
+                    width: 58%;
+                    font-size: 16px;
+                    text-align: center;
+                    width: 47%;
+                    margin-top: 10px;
+                }
+                .soc_ico{
+                    width: 52%;
+                    img{
+                        width:26px;
+                        margin: 18px 3px;
+                    }
+                }
+            }
+            .block_2{
+                margin-bottom: 32px;
+                width: 100%;
+                text-align: left;
+                display: flex;
+                flex-wrap: wrap;
+                div{
+                    width: 50%;
+                }
+                a, span{
+                    font-size: 15px;
+                }
+                p{
+                    width: 100%;
+                    font-size: 21px;
+                }
+               
+                a{
+                    color: FF5D04;
+                    font-size: 15px;
+                    margin: 4px 0;
+                    padding-left: 30px;
+                }
+            }
+            .block_3{
+                margin-bottom: 32px;
+                width: 100%;
+                text-align: left;
+                display: flex;
+                flex-wrap: wrap;
+                a, span{
+                    display: block;
+                    margin: 4px 0;
+                    width: 50%;
+                    font-size: 15px;
+                }
+                p{
+                    font-size: 21px;
+                }
+            }
+        }
+    }
+}

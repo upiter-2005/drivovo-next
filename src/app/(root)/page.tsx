@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import { Client } from "@notionhq/client";
 import { Metadata } from "next";
 import CarCard from "@/components/CarCard";

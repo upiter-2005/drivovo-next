@@ -1,5 +1,5 @@
 import {Comfortaa} from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import GoogleTagManager from '@magicul/next-google-tag-manager'
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"

@@ -24,8 +24,8 @@ export async function generateMetadata(
   });
 
   return {
-    title: car.results[0].properties.Name,
-    description: '...'
+    title: car.results[0].properties.car_name.rich_text[0].plain_text,
+    description: '`Drivovo - ${car.results[0].properties.car_name.rich_text[0].plain_text}`'
   }  
 }
 

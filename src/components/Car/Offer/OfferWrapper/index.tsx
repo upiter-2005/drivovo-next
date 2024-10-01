@@ -1,24 +1,25 @@
-import { ImageObj, TopData } from "../TopData";
+
 import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
-import { CarBlock2 } from "../CarBlock2";
-import { ICarTable1 } from "../CarTable1";
-import { DownloadSchedule } from "../DownloadSchedule";
-import { CarTable2 } from "../CarTable2";
-import { InfoBlock } from "../InfoBlock";
-import { Notice1 } from "../Notice1";
-import { FrameHubspot } from "../FrameHubspot";
+import { CarBlock2 } from "@/components/Car/CarBlock2";
+import { ICarTable1 } from "@/components/Car//CarTable1";
+import { DownloadSchedule } from "@/components/Car//DownloadSchedule";
+import { CarTable2 } from "@/components/Car//CarTable2";
+import { InfoBlock } from "@/components/Car//InfoBlock";
+import { Notice1 } from "@/components/Car//Notice1";
+import { FrameHubspot } from "@/components/Car//FrameHubspot";
 import { Comunity } from "@/components/Comunity";
 import { Reviews } from "@/components/Reviews";
-import { CarBlock3 } from "../CarBlock3";
+import { CarBlock3 } from "@/components/Car//CarBlock3";
 import { CarResponse } from "@/global";
+import { ImageObj } from "../../TopData";
 
-interface ICarWrapper {
+interface IOfferWrapper {
   id: string
   car: CarResponse
   media: ImageObj[]
 }
 
-export const CarWrapper:React.FC<ICarWrapper> = ({id, car, media}) => {
+export const OfferWrapper:React.FC<IOfferWrapper> = ({id, car, media}) => {
 
   const calcInstance = ownThreeYearsCount(car);
 
@@ -63,29 +64,7 @@ export const CarWrapper:React.FC<ICarWrapper> = ({id, car, media}) => {
 
   return(
     <>
-      <TopData 
-        id={id}
-        carName={data.carName}
-        editedTime={data.edited_time}
-        sandpulseForm={data.sandpulse_form}
-        photo={data.photo}
-        price={calcInstance.pricePerMonthStandart}
-        calc={calcInstance}
-        media={media}
-      />
-      <CarBlock2
-        title={data.title}
-        text={data.text}
-        acceleration={data.acceleration}
-        power={data.power}
-        engine_capacity={data.engine_capacity}
-        engine_type={data.engine_type}
-        vehicle_interior={data.vehicle_interior}
-        drive_type={data.drive_type}
-        body_type={data.body_type}
-        fuel_consumption={data.fuel_consumption}
-        video={data.video}
-      />
+    
       <ICarTable1
         name={data.carName}
         price={calcInstance.pricePerMonthStandart}
