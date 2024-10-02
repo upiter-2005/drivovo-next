@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from "./TopData.module.scss"
 import clock from "@/assets/img/clock-ico.svg"
 import red_check from "@/assets/img/red-check.svg"
-import Slider from 'react-slick'
+import Slider, { Settings } from 'react-slick'
 import { useState } from 'react'
 import { Modal } from '../Modal'
 import { trackFbPurchase } from '@/helpers/fb'
@@ -53,7 +53,7 @@ export const TopData:React.FC<ICarObj> = ({id, calc,  carName, editedTime, sandp
   const [activeNumSlide, setActiveNumSlide] = useState<number>(1)
   const [isModal, setIsModal] = useState<boolean>(false)
 
-  const topSlider = {
+  const topSlider: Settings= {
     dots: false,
     infinite: true,
     speed: 500,

@@ -1,0 +1,25 @@
+
+.offerDescr{
+  padding-top: 80px;
+  width: 95%;
+  margin: 0 auto;
+  text-align: left;
+  margin-bottom: 62px;
+  .descrBlock{
+    padding-top: 34px;
+    max-width: 800px;
+    font-size: 19px;
+    color: #23262A;
+    line-height: 25px;
+  }
+}
+@media(max-width: 992px){
+  .offerDescr{
+    padding-top: 40px;
+    
+    .descrBlock{
+      padding-top: 14px;
+      font-size: 16px;
+    }
+  }
+}

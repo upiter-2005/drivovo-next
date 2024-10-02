@@ -6,7 +6,7 @@ export const ownThreeYearsCount = (carObject: any) => {
 
 
 
-  let persent: number = 0.4
+  let persent: number = carObject.residual_value.number
   let dopCost: number = 0
   let lastPayment: number = 0
   let drivovoPrice: number = 0
@@ -25,10 +25,6 @@ export const ownThreeYearsCount = (carObject: any) => {
   let tires: number = 0
   let aditionals: number = 0
   let service: number = 0
-
-  if(carObject.residual_value?.number !== 0){
-    persent = carObject.residual_value.number
-  }
 
   let result: number = (
     startFund +

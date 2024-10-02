@@ -72,18 +72,15 @@ export default async function CarPage ({ params: {id} }: {params: {id: string}})
 
   const media: any = await fetch(`https://drivovo.com/wp-json/wp/v2/offers?slug=${id}`).then(res => res.json())
 
-
-
   if(!car || !media[0].ACF.gallery) return(<p>Car not found</p>)
   
   return (
-    
     <div>
       <OfferImage media={media[0].ACF.gallery} />
       <OfferWrapper 
-        car={car.results[0].properties} 
-        id={car.results[0].id} 
-        media={media[0].ACF.gallery}
+          car={car.results[0].properties} 
+          id={car.results[0].id} 
+          media={media[0].ACF.gallery}
         />
     </div>
   )

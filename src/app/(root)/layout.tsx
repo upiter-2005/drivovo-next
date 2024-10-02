@@ -19,8 +19,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       
-       
        <script src="https://www.youtube.com/iframe_api" async ></script>
        <script async src="https://static.sppopups.com/assets/loader.js" data-chats-widget-id="a21c2ba7-130d-4cf7-8884-5a7d717f470f"></script>
       

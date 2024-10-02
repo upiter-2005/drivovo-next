@@ -23,7 +23,7 @@
             width: 300px;
             text-align: center;
             .tel{
-                color: FF5D04;
+                color: #FF5D04;
                 text-decoration: underline;
                 font-size: 25px;
                 font-weight: 400;
@@ -46,6 +46,7 @@
                 color: #23262A;
                 font-size: 24px;
                 font-weight: 700; 
+                margin-bottom: 18px;
             }
             span{
                 color: #23262A;
@@ -53,9 +54,10 @@
                
             }
             a{
-                color: FF5D04;
+                color: #FF5D04;
                 font-size: 17px;
                 margin: 6px 0;
+                text-decoration: underline;
             }
         }
         .block_3{
@@ -66,19 +68,22 @@
                 margin: 6px 0;
             }
             a{
-                color: FF5D04;
+                color: #FF5D04;
                 font-size: 17px;
+                text-decoration: underline;
             }
             p{
                 color: #23262A;
                 font-size: 24px;
                 font-weight: 700; 
+                margin-bottom: 18px;
             }
         }
     }
 }
 @media (max-width: 768px){
-    footer{
+    .footer{
+        padding-top: 40px;
         .copy{
             margin-top: 30px;
             margin-bottom: 32px;
@@ -131,7 +136,7 @@
                 }
                
                 a{
-                    color: FF5D04;
+                    color: #FF5D04;
                     font-size: 15px;
                     margin: 4px 0;
                     padding-left: 30px;

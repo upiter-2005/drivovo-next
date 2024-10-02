@@ -1,17 +1,17 @@
 
 import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
-import { CarBlock2 } from "@/components/Car/CarBlock2";
-import { ICarTable1 } from "@/components/Car//CarTable1";
-import { DownloadSchedule } from "@/components/Car//DownloadSchedule";
-import { CarTable2 } from "@/components/Car//CarTable2";
-import { InfoBlock } from "@/components/Car//InfoBlock";
-import { Notice1 } from "@/components/Car//Notice1";
-import { FrameHubspot } from "@/components/Car//FrameHubspot";
-import { Comunity } from "@/components/Comunity";
-import { Reviews } from "@/components/Reviews";
-import { CarBlock3 } from "@/components/Car//CarBlock3";
-import { CarResponse } from "@/global";
-import { ImageObj } from "../../TopData";
+import { ICarTable1 } from "@/components/Car//CarTable1"
+import { CarTable2 } from "@/components/Car//CarTable2"
+import { InfoBlock } from "@/components/Car//InfoBlock"
+import { Notice1 } from "@/components/Car//Notice1"
+import { FrameHubspot } from "@/components/Car//FrameHubspot"
+import { Comunity } from "@/components/Comunity"
+import { CarResponse } from "@/global"
+import { ImageObj } from "../../TopData"
+import { OfferTop } from "../OfferTop"
+import { Schedule } from "../Schedule"
+import { Notice2 } from "../../Notice2"
+
 
 interface IOfferWrapper {
   id: string
@@ -20,7 +20,7 @@ interface IOfferWrapper {
 }
 
 export const OfferWrapper:React.FC<IOfferWrapper> = ({id, car, media}) => {
-
+  
   const calcInstance = ownThreeYearsCount(car);
 
   const data = {
@@ -61,28 +61,20 @@ export const OfferWrapper:React.FC<IOfferWrapper> = ({id, car, media}) => {
     insurance_2_year: car.insurance_2_year.formula.number
   }
 
-
   return(
     <>
-    
-      <ICarTable1
-        name={data.carName}
-        price={calcInstance.pricePerMonthStandart}
-        subscribeAvto={calcInstance.subscriptionAvto}
-        taxes={calcInstance.taxes}
-        osago={calcInstance.osago}
-        maintenance={calcInstance.maintenance}
-        tires={calcInstance.tires}
-        aditionals={calcInstance.aditionals}
-        service={calcInstance.service}
-       />  
-      <DownloadSchedule
-        cover={data.hubspot_cover}
-        sendPulse={data.sandpulse_form}
-        media={media}
-        price={calcInstance.pricePerMonthStandart}
-      />  
-      <CarTable2
+      <OfferTop media={media} title={data.title} text={data.text} />
+      <Schedule 
+        pricePerMonthStandart={calcInstance.pricePerMonthStandart}
+        pricePerMonth40={calcInstance.pricePerMonth40}
+        garanty={calcInstance.garanty}
+        car_price_ex_showroom={data.car_price_ex_showroom}
+        garantyStandart={calcInstance.garantyStandart}
+        drivovoPrice={calcInstance.drivovoPrice}
+        costDop40={calcInstance.costDop40}
+        persent={calcInstance.persent}
+       />
+       <CarTable2
         name={data.carName}
         carpet={data.carpets}
         car_price_ex_showroom={data.car_price_ex_showroom}
@@ -105,15 +97,24 @@ export const OfferWrapper:React.FC<IOfferWrapper> = ({id, car, media}) => {
         lastPayment={calcInstance.lastPayment}
         drivovoPrice={calcInstance.drivovoPrice}
       />  
+      <ICarTable1
+        name={data.carName}
+        price={calcInstance.pricePerMonthStandart}
+        subscribeAvto={calcInstance.subscriptionAvto}
+        taxes={calcInstance.taxes}
+        osago={calcInstance.osago}
+        maintenance={calcInstance.maintenance}
+        tires={calcInstance.tires}
+        aditionals={calcInstance.aditionals}
+        service={calcInstance.service}
+       />  
+      
+      
       <InfoBlock />
-      <Notice1 />
       <FrameHubspot />
+      <Notice1 />
       <Comunity />
-      <Reviews />
-      <CarBlock3
-        id={id}
-        bottom_cover={media}
-      />
+      <Notice2 />
     </>
     
   )

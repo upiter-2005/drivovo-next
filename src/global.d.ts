@@ -916,5 +916,6 @@ export interface Annotations12 {
 declare global {
   interface Window {
     fbq?: any;
+    innerWidth?: number;
   }
 }

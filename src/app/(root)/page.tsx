@@ -12,9 +12,7 @@ export const metadata: Metadata = {
   description: 'Drivovo offers',
 }
 
-
 export default async function Home() {
-
   const cars = await notion.databases.query({
     database_id: databaswId || '',
     sorts: [
