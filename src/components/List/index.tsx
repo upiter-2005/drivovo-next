@@ -1,3 +1,4 @@
+'use client'
 import styles from "./List.module.scss"
 import Link from "next/link"
 
@@ -6,6 +7,7 @@ interface IList {
 }
 
 export const ListBlock:React.FC<IList> = ({cars}) => {
+  console.log(cars);
   return(
     <div className={styles.list}>
     <div>

@@ -16,13 +16,12 @@ export default async function List () {
       },
     ],
     filter: {
-      property: "Status",
-      status: {
-        equals: 'Done'
+      property: "offer_visibility",
+      select: {
+        equals: 'true'
       }
     },
   });
-  console.log(cars);
 
   if(!cars) return (<p>Not found</p>)
 

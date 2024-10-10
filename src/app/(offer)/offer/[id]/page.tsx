@@ -41,24 +41,19 @@ export async function generateStaticParams() {
       },
     ],
     filter: {
-      property: "Status",
-      status: {
-        equals: 'Done'
+      property: "offer_visibility",
+      select: {
+        equals: 'true'
       }
     },
   });
-
-
 
   return cars.results.map((car: any) => ({
     id: car.properties.URL.rich_text[0].plain_text,
   }))
 }
 
-
 export default async function CarPage ({ params: {id} }: {params: {id: string}})  {
-
-  
 
   const car: any = await notion.databases.query({
     database_id: databaswId || '',
@@ -72,11 +67,12 @@ export default async function CarPage ({ params: {id} }: {params: {id: string}})
 
   const media: any = await fetch(`https://drivovo.com/wp-json/wp/v2/offers?slug=${id}`).then(res => res.json())
 
-  if(!car || !media[0].ACF.gallery) return(<p>Car not found</p>)
+  if(!car) return(<p>Car not found</p>)
   
   return (
     <div>
-      <OfferImage media={media[0].ACF.gallery} />
+     <OfferImage media={media[0].ACF.gallery} />
+      
       <OfferWrapper 
           car={car.results[0].properties} 
           id={car.results[0].id} 

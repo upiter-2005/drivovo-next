@@ -59,7 +59,7 @@ export const OfferTop:React.FC<ITopData> = ({media, title, text}) => {
           {text}
         </div>
       </div>
-
+      
       <div>
         <Slider 
         {...settings} ref={sliderRef} >
