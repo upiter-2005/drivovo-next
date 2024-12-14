@@ -12,7 +12,7 @@ export async function generateMetadata(
   { params }: Props,
 ): Promise<Metadata> {
   const id = params.id
-
+  const media: any = await fetch(`https://drivovo.com/wp-json/wp/v2/offers?slug=${id}`).then(res => res.json())
   const car: any = await notion.databases.query({
     database_id: databaswId || '',
     filter: {
@@ -24,8 +24,19 @@ export async function generateMetadata(
   });
 
   return {
-    title: car.results[0].properties.car_name.rich_text[0].plain_text,
-    description: '`Drivovo - ${car.results[0].properties.car_name.rich_text[0].plain_text}`'
+    title: car.results[0].properties.seo_title.rich_text[0].plain_text,
+    description: car.results[0].properties.seo_description.rich_text[0].plain_text,
+    openGraph: {
+      title: car.results[0].properties.seo_title.rich_text[0].plain_text,
+      description: car.results[0].properties.seo_description.rich_text[0].plain_text,
+      images: [
+        {
+          url: media[0].ACF.gallery[0].full_image_url, // Must be an absolute URL
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
   }  
 }
 

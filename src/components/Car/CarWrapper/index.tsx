@@ -1,3 +1,4 @@
+'use client'
 import { ImageObj, TopData } from "../TopData";
 import {ownThreeYearsCount} from "@/helpers/ownThreeYearsCount"
 import { CarBlock2 } from "../CarBlock2";
@@ -19,7 +20,7 @@ interface ICarWrapper {
 }
 
 export const CarWrapper:React.FC<ICarWrapper> = ({id, car, media}) => {
-
+console.log(media);
   const calcInstance = ownThreeYearsCount(car);
 
   const data = {

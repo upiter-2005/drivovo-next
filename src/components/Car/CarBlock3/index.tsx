@@ -11,6 +11,8 @@ interface ICarBlock3 {
 
 export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover, id }) => {
 
+  const lnth = bottom_cover.length - 1
+
   return(
   <>
     <section className={styles.titleSection}>
@@ -36,7 +38,7 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover, id }) => {
       </div>
     </div>
   </section>
-  
+
   <section className={styles.titleSection}>
     <h2 className={styles.customH2}>
       Drivovo - ікігай твого автомобіля
@@ -50,10 +52,10 @@ export const CarBlock3:React.FC<ICarBlock3> = ({bottom_cover, id }) => {
             <button className={`${styles.hubspotForm} ${styles.redBtn} sp_popup_47e55cb9-bd9e-42b5-84c4-eb25602b9154 `} onClick={()=>trackFbAddToCart(id)}>go drivovo</button>
         </div>
     <div className={styles.hbsp_box_img}>
-      <img src={bottom_cover[4].full_image_url} alt="" />
-    </div> 
+      <img src={bottom_cover[lnth].full_image_url} alt="" />
+    </div>
   </div>
   </>
-    
+
   )
 }
